@@ -1,0 +1,19 @@
+  {
+    "presets": [
+      [ "env", {
+        "targets": {
+          "node": "current"
+        }
+      }]
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ],
+    "only": [
+      "src",
+      "test"
+    ],
+    "ignore": [
+      "node_modules"
+    ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "@hamletink/rxsh",
+  "version": "1.0.0",
+  "description": "Observable versions of common shell commands",
+  "main": "index.js",
+  "scripts": {
+    "build": "NODE_ENV=production ./task/build.sh",
+    "dev": "NODE_ENV=development ./task/start.sh",
+    "test": "NODE_ENV=test ./task/test.sh"
+  },
+  "author": "Jerry Hamlet <jerry@hamletink.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhamlet/hamletink-rxsh.git"
+  },
+  "dependencies": {
+    "ramda": "0.25.0",
+    "rxjs": "6.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.3",
+    "babel-eslint": "8.2.3",
+    "babel-plugin-object-rest-spread": "0.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-preset-env": "1.7.0",
+    "babel-register": "6.26.0",
+    "eslint": "4.19.1",
+    "eslint-plugin-babel": "5.1.0",
+    "expect.js": "0.3.1",
+    "mocha": "5.2.0"
+  }
+}

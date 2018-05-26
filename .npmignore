@@ -1,0 +1,11 @@
+.DS_Store
+/src
+/test
+/task
+/.gitignore
+/.babelrc
+/.git
+/.eslintrc
+/package
+/*.tgz
+

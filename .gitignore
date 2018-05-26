@@ -1,0 +1,11 @@
+.DS_Store
+npm-debug.log*
+/*.js
+/**/*.js
+/node_modules
+!/src
+!/src/*.js
+!/src/**/*.js
+/*.tgz
+/package
+
