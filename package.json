@@ -1,6 +1,6 @@
 {
-  "name": "@hamletink/rxsh",
-  "version": "1.0.0",
+  "name": "@jhamlet/rxsh",
+  "version": "1.0.0-beta.1",
   "description": "Observable versions of common shell commands",
   "main": "index.js",
   "scripts": {
@@ -12,9 +12,10 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jhamlet/hamletink-rxsh.git"
+    "url": "git+https://github.com/jhamlet/rxsh.git"
   },
   "dependencies": {
+    "@jhamlet/common": "1.0.0-beta.1",
     "ramda": "0.25.0",
     "rxjs": "6.2.0"
   },
