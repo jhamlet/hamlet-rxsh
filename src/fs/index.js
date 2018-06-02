@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 const { bindNodeCallback, empty, from } = Observable;
 import { curryN, flatten, filter, nAry, pipe } from 'ramda';
-import { isString } from '../predicates';
+import { isString } from '@hamletink/util/predicates';
 import { join } from 'path';
 
 import fs, {

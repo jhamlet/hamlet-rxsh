@@ -2,23 +2,27 @@ import { Observable } from 'rxjs';
 const { of } = Observable;
 
 import { watch as fsWatch } from 'fs';
-import { pump, disposer } from 'util/observable';
 
 export const watch = (filepath, opts) =>
   Observable.create(observer => {
     const watcher = fsWatch(filepath, opts);
-    const disposed = disposer();
+    let disposed = false;
 
-    const listener = pump(disposed, observer);
-    const change = (type, filename) => listener(null, {
-      type, filename, original: filepath
-    });
+    const listener = (error, value) =>
+      !disposed
+        ? error
+        ? observer.error(error)
+        : observer.next(value)
+        : null;
+
+    const change = (type, filename) =>
+      listener(null, { type, filename, original: filepath });
 
     watcher.on('error', listener);
     watcher.on('change', change);
 
     return () => {
-      disposed(true);
+      disposed = true;
       watcher.close();
     };
   });
@@ -35,3 +39,4 @@ export const watchFile = (filepath, opts) =>
     );
 
 export default watch;
+
