@@ -22,3 +22,6 @@ export const resolve = curry((patterns,  opts = {}) => {
       refCount()
     )
 });
+
+export default resolve;
+

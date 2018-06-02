@@ -13,11 +13,10 @@ import {
 
 const prefix        = curryN(2, nAry(2, join));
 const stringifyArgs = pipe(flatten, filter(isString));
-
-const readdir   = bindNodeCallback(fsReaddir);
-const readFile  = bindNodeCallback(fsReadFile);
-const writeFile = bindNodeCallback(fsWriteFile);
-const stat      = bindNodeCallback(fsStat);
+const readdir       = bindNodeCallback(fsReaddir);
+const readFile      = bindNodeCallback(fsReadFile);
+const writeFile     = bindNodeCallback(fsWriteFile);
+const stat          = bindNodeCallback(fsStat);
 
 export { readdir, readFile, writeFile, stat };
 export { readFile as read, writeFile as write };
@@ -56,27 +55,5 @@ export const file = (...args) =>
       refCount()
     );
 
-export const directory = (...args) =>
-  node(args).
-    pipe(
-      tap(node => {
-        if (!node.stats.isDirectory()) {
-          throw new Error(`'${node.filename}' is not a directory.`);
-        }
-      }),
-      publishLast(),
-      refCount()
-    );
-
-import glob from './glob';
-import mkdirp from './mkdirp';
-import resolve from './resolve';
-import rmrf from './rmrf';
-import traverse from './traverse';
-import { watch, watchFile } from './watch';
-
-export const traverseDirectory =
-  (...args) => directory(...args).pipe(concatMap(traverse));
-
-export { glob, mkdirp, resolve, rmrf, traverse, watch, watchFile };
+export default file;
 
