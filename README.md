@@ -1,4 +1,4 @@
-jhamlet/rxsh
+hamletink/rxsh
 =================
 
 > Observable versions of common shell commands
@@ -7,20 +7,24 @@ Installation
 ------------
 
 ```
-npm install --save @jhamlet/rxsh
+npm install --save @hamletink/rxsh
 ```
 
 Usage
 -----
 
 ```js
-import { sh } from '@jhamlet/rxsh';
+import { sh } from '@hamletink/rxsh';
+
+// or
+
+import { sh } from '@hamletink/sh';
 ```
 
 Report an Issue
 ---------------
 
-* [Bugs](http://github.com/jhamlet/rxsh/issues)
+* [Bugs](http://github.com/jhamlet/hamletink-rxsh/issues)
 * Contact the author: <jerry@hamletink.com>
 
 
