@@ -1,8 +1,8 @@
-import { Observable } from 'rxjs';
-const { bindNodeCallback } = Observable;
+import { bindNodeCallback } from 'rxjs';
 
 import rimraf from 'rimraf';
 
 export const rmrf = bindNodeCallback(rimraf);
 
 export default rmrf;
+

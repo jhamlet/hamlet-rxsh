@@ -1,6 +1,5 @@
-import { Observable } from 'rxjs';
-const { of } = Observable;
-
+import { Observable, of } from 'rxjs';
+import { concat, concatMap, delay, take } from 'rxjs/operators';
 import { watch as fsWatch } from 'fs';
 
 export const watch = (filepath, opts) =>
@@ -29,14 +28,18 @@ export const watch = (filepath, opts) =>
 
 export const watchFile = (filepath, opts) =>
   watch(filepath, opts).
-    take(1).
-    concatMap(event =>
-      of(event).
-      // give tick to allow for file system to update
-      // should probably check stats...
-      delay(0).
-      concat(watchFile(filepath, opts))
-    );
+    pipe(
+      take(1),
+      concatMap(event =>
+        of(event).
+        pipe(
+          // give tick to allow for file system to update
+          // should probably check stats...
+          delay(0),
+          concat(watchFile(filepath, opts))
+        )
+      )
+    )
 
 export default watch;
 

@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs';
-const { from } = Observable;
+import { from } from 'rxjs';
+import { concatMap, publishReplay, refCount } from 'rxjs/operators';
 import { curry } from 'ramda';
 import glob from './glob';
 import { explode } from 'path';
@@ -11,10 +11,14 @@ export const resolve = curry((patterns,  opts = {}) => {
   patterns = defaultToArray(patterns);
 
   return from(explode(cwd)).
-    concatMap(dir =>
-      from(patterns).
-      concatMap(pattern => glob(join(dir, pattern), opts))
-    ).
-    publishReplay().
-    refCount();
+    pipe(
+      concatMap(dir =>
+        from(patterns).
+        pipe(
+          concatMap(pattern => glob(join(dir, pattern), opts))
+        )
+      ),
+      publishReplay(),
+      refCount()
+    )
 });

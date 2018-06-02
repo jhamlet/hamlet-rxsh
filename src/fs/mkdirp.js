@@ -1,5 +1,4 @@
-import { mkdir, mkdtemp } from 'fs';
-import { bindNodeCallback } from 'rxjs/observable/bindNodeCallback';
+import { bindNodeCallback } from 'rxjs';
 export const mkdirp = bindNodeCallback(require('mkdirp'));
 export default mkdirp;
 
