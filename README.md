@@ -18,7 +18,7 @@ import { sh } from '@hamletink/rxsh';
 
 // or
 
-import { sh } from '@hamletink/sh';
+import sh from '@hamletink/rxsh/sh';
 ```
 
 Report an Issue
